@@ -7,8 +7,8 @@ def app():
     # from google_trans_new import google_translator,LANGUAGES
     translator = Translator()
     # translator = google_translator()
-    data = pd.read_csv('data/main_data.csv')
-    column_data = pd.read_csv('data/meta/column_data.csv')
+    data = pd.read_csv('data/main_data.csv',lineterminator='\n')
+    column_data = pd.read_csv('data/meta/column_data.csv',lineterminator='\n')
     column = column_data['column'][0]
     label = column_data['label'][0]
     key_list_leng = list(LANGUAGES.keys())
@@ -36,7 +36,7 @@ def app():
             # translator.translate()
             stop = timeit.default_timer()
             data.to_csv('data/data_branch.csv',index=False)
-            data_branch = pd.read_csv('data/data_branch.csv')
+            data_branch = pd.read_csv('data/data_branch.csv',lineterminator='\n')
             st.dataframe(data)
             st.write('proses translate : ', stop-start,' detik')
             
