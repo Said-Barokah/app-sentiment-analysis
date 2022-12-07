@@ -77,8 +77,8 @@ def text_preprocessing(data,step,column='column',list_stem_stop_leng=['eng','ind
                 st.success('Berhasil disimpan')
 def app():
     #Your statements here
-    data = pd.read_csv('data/main_data.csv')
-    column_data = pd.read_csv('data/meta/column_data.csv')
+    data = pd.read_csv('data/main_data.csv',lineterminator='\n')
+    column_data = pd.read_csv('data/meta/column_data.csv',lineterminator='\n')
     column = column_data['column'][0]
     from googletrans import Translator,LANGUAGES
 
