@@ -11,12 +11,12 @@ def wordCount(text) :
     return count
 
 def app():
-    column_data = pd.read_csv('data/meta/column_data.csv')
+    column_data = pd.read_csv('data/meta/column_data.csv',lineterminator='\n')
     column = column_data['column'][0]
     from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
     from sklearn.preprocessing import normalize
     import numpy as np
-    data = pd.read_csv('data/main_data.csv')
+    data = pd.read_csv('data/main_data.csv',lineterminator='\n')
     col1, col2 = st.columns(2)
     with col1 :
         st.subheader('Text')
