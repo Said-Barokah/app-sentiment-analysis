@@ -13,15 +13,6 @@ def text_preprocessing(data,step,column='column',list_stem_stop_leng=['eng','ind
             options = st.multiselect('Pilih proses',
             ['hapus angka', 'hapus single karakter', 'hapus tanda baca'],
             ['hapus tanda baca'])    
-            start = timeit.default_timer()
-            for option in options:
-                if option == 'hapus angka':
-                    data[column] = data[column].str.replace('\d+', '')
-                if option == 'hapus single karakter':
-                    data[column] = data[column].str.replace(r"\b[a-zA-Z]\b", "")
-                if option == "hapus tanda baca":
-                    data[column] = data[column].str.replace(r'[^\w\s]+', '')
-            stop = timeit.default_timer()
         if step == "remove stopwords":
             language = st.selectbox("Pilih bahasa yang anda gunakan :",
             list_stem_stop_leng,index=index_detect_leng)
@@ -34,6 +25,16 @@ def text_preprocessing(data,step,column='column',list_stem_stop_leng=['eng','ind
             if step == 'case fold':
                 start = timeit.default_timer()
                 data[column] = data[column].str.lower()
+                stop = timeit.default_timer()
+            if step == "filtering" :
+                start = timeit.default_timer()
+                for option in options:
+                    if option == 'hapus angka':
+                        data[column] = data[column].str.replace('\d+', '')
+                    if option == 'hapus single karakter':
+                        data[column] = data[column].str.replace(r"\b[a-zA-Z]\b", "")
+                    if option == "hapus tanda baca":
+                        data[column] = data[column].str.replace(r'[^\w\s]+', '')
                 stop = timeit.default_timer()
             if step == 'remove stopwords' :
                 import nltk
@@ -65,7 +66,7 @@ def text_preprocessing(data,step,column='column',list_stem_stop_leng=['eng','ind
                     stop = timeit.default_timer()
                     data[column] = data[column].str.join(" ")
             data.to_csv('data/data_branch.csv',index=False)
-            data_branch = pd.read_csv('data/data_branch.csv')
+            data_branch = pd.read_csv('data/data_branch.csv',lineterminator='\n')
         
             st.subheader('Data setelah di proses')
             st.write(data_branch)
