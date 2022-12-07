@@ -8,7 +8,7 @@ def app():
     
     if data is not None:
         try :
-            dataframe = pd.read_csv(data)
+            dataframe = pd.read_csv(data,lineterminator='\n')
             st.write(dataframe)
 
             col1, col2 = st.columns(2)
