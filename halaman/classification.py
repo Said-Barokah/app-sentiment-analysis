@@ -6,9 +6,9 @@ import time
 def app() :
     from sklearn.model_selection import train_test_split
     data = pd.read_csv('data/main_data.csv',lineterminator='\n')
-    column_data = pd.read_csv('data/meta/column_data.csv')
-    label = column_data['label'][0]
-    y = data[[label]].values
+    column_data = pd.read_csv('data/meta/column_data.csv',lineterminator='\n')
+    label = column_data['column'][0]
+    y = data[label].values
     tf_idf = pd.read_csv('data/tf_idf.csv',lineterminator='\n')
     ## pembagian data test dengan data secara otomatis
 
