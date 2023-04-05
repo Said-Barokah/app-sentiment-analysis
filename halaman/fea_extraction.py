@@ -58,8 +58,8 @@ def app():
     st.subheader('Cari kata pada dokumen')
     feature_select = st.selectbox('Pilih fitur atau kata :',options=tfidf.get_feature_names(),key='feature_list')
     doc_list = st.number_input('Pilih dokumen ke berapa (dari index ke-0):',min_value=0,max_value=99,key='doc_list')
-    count_token = tokenizer(data['text'][doc_list]).count(feature_select)
-    len_doc = len(tokenizer(data['text'][doc_list]))
+    count_token = tokenizer(data[column][doc_list]).count(feature_select)
+    len_doc = len(tokenizer(data[column][doc_list]))
     st.write("Di dokumen ", doc_list ," " , feature_select ," ada ", count_token ," kata " , "dari ", len_doc, " kata")
 
 
