@@ -77,17 +77,17 @@ def app() :
                     accuracy = classification_report(y_test,y_pred,output_dict=True)['accuracy']
                     df = df.append({'knn' : accuracy},ignore_index=True)
                 df_accuracy['knn'] = df["knn"]
-             if i == 'rondom forest' :
-                df = pd.DataFrame(columns=['rondom forest'])
-                for j in range(many_tries):
-                    text_train, text_test, y_train, y_test = train_test_split(tf_idf, y, test_size = test_size,train_size= train_size,shuffle=data_suffle)
-                    from sklearn.ensemble import RandomForestClassifier
-                    rf = RandomForestClassifier(n_estimators = 10)
-                    rf = rf.fit(text_train, y_train)
-                    y_pred = rf.predict(text_test)
-                    accuracy = classification_report(y_test,y_pred,output_dict=True)['accuracy']
-                    df = df.append({'rf' : accuracy},ignore_index=True)
-                df_accuracy['rf'] = df["rf"]
+            if i == 'rondom forest' :
+               df = pd.DataFrame(columns=['rondom forest'])
+               for j in range(many_tries):
+                   text_train, text_test, y_train, y_test = train_test_split(tf_idf, y, test_size = test_size,train_size= train_size,shuffle=data_suffle)
+                   from sklearn.ensemble import RandomForestClassifier
+                   rf = RandomForestClassifier(n_estimators = 10)
+                   rf = rf.fit(text_train, y_train)
+                   y_pred = rf.predict(text_test)
+                   accuracy = classification_report(y_test,y_pred,output_dict=True)['accuracy']
+                   df = df.append({'rf' : accuracy},ignore_index=True)
+               df_accuracy['rf'] = df["rf"]
 
     with st.expander("Lihat Hasil"):
         st.line_chart(df_accuracy)
