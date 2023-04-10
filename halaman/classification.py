@@ -14,8 +14,8 @@ def app() :
     y = data[label].values
     tf_idf = pd.read_csv('data/tf_idf.csv',lineterminator='\n')
     
-    data = st.file_uploader("upload data berformat csv", type=['csv'])
-    tf_idf = pd.read_csv(data,lineterminator='\n')
+    datamanual = st.file_uploader("upload data berformat csv", type=['csv'])
+    tf_idf = pd.read_csv(datamanual,lineterminator='\n')
     ## pembagian data test dengan data secara otomatis
 
     st.subheader('Klasifikasi')
