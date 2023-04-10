@@ -81,7 +81,7 @@ def app() :
                 df = pd.DataFrame(columns=['rondom forest'])
                 for j in range(many_tries):
                     text_train, text_test, y_train, y_test = train_test_split(tf_idf, y, test_size = test_size,train_size= train_size,shuffle=data_suffle)
-                    sklearn.ensemble import RandomForestClassifier
+                    from sklearn.ensemble import RandomForestClassifier
                     rf = RandomForestClassifier(n_estimators = 10)
                     rf = neigh.fit(text_train, y_train)
                     y_pred = rf.predict(text_test)
