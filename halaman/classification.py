@@ -83,7 +83,7 @@ def app() :
                     text_train, text_test, y_train, y_test = train_test_split(tf_idf, y, test_size = test_size,train_size= train_size,shuffle=data_suffle)
                     from sklearn.ensemble import RandomForestClassifier
                     rf = RandomForestClassifier(n_estimators = 10)
-                    rf = neigh.fit(text_train, y_train)
+                    rf = rf.fit(text_train, y_train)
                     y_pred = rf.predict(text_test)
                     accuracy = classification_report(y_test,y_pred,output_dict=True)['accuracy']
                     df = df.append({'rf' : accuracy},ignore_index=True)
