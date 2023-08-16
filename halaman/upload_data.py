@@ -4,11 +4,11 @@ import time
 import os
 def app():
     st.title('APLIKASI SENTIMEN ANALASIS')
-    data = st.file_uploader("upload data berformat csv", type=['csv'])
+    data = st.file_uploader("upload data berformat csv", type=['xlsx'])
     
     if data is not None:
         try :
-            dataframe = pd.read_csv(data,lineterminator='\n')
+            dataframe = pd.read_excel(data,lineterminator='\n')
             st.write(dataframe)
 
             col1, col2 = st.columns(2)
