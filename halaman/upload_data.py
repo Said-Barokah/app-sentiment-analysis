@@ -4,7 +4,7 @@ import time
 import os
 def app():
     st.title('APLIKASI SENTIMEN ANALASIS')
-    data = st.file_uploader("upload data berformat csv", type=['xlsx'])
+    data = st.file_uploader("upload data berformat csv", type=['csv'])
     
     if data is not None:
         try :
